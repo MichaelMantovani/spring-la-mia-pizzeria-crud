@@ -10,7 +10,8 @@
 <body>
 	<div class="container">
 		<div class="text-center mt-4">
-			<table class="table table-striped">
+			<h1 th:if="${pizze == null}">Non ci sono pizze</h1>
+			<table th:if="${pizze != null}" class="table table-striped">
 				<thead>
 					<tr>
 						<th scope="col">Id</th>
@@ -21,10 +22,11 @@
 				</thead>
 				<tbody>
 					<tr th:each="pizza : ${pizze}">
-						<th scope="row">[[${pizza.id}]]</th>
-						<td>[[${pizza.nome}]]</td>
+						<td>[[${pizza.id}]]</td>
+						<th>[[${pizza.nome}]]</th>
 						<td>[[${pizza.descrizione}]]</td>
 						<td>[[${pizza.prezzo}]] €</td>
+						<td><a th:href="@{pizza/{pizzaId}(pizzaId=${pizza.id})}" class="btn btn-primary">Info</a></td>
 					</tr>
 				</tbody>
 			</table>
