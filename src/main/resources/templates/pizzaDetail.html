@@ -13,7 +13,7 @@
 			<div class="card" style="width: 25rem;">
 				<img th:src="@{${pizza.foto}}" class="card-img-top  p-3" alt="...">
 				<div class="card-body">
-					<h3 class="card-title">[[${pizza.nome}]]</h3>
+					<h3 class="card-title">[[${pizza.name}]]</h3>
 					<h5 class="card-subtitle mb-2 text-body-secondary">[[${pizza.prezzo}]]</h5>
 					<p class="card-text">[[${pizza.descrizione}]]</p>
 					<a th:replace="returnButton :: button('/', 'Return')"></a>

@@ -10,6 +10,10 @@
 <body>
 	<div class="container">
 		<div class="text-center mt-4">
+			<form class="d-flex w-25 mb-4" role="search">
+				<input class="form-control me-2" type="search" placeholder="Search" th:value="*{searchValue}" name="searchValue">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
 			<h1 th:if="${pizze == null}">Non ci sono pizze</h1>
 			<table th:if="${pizze != null}" class="table table-striped">
 				<thead>
@@ -23,7 +27,7 @@
 				<tbody>
 					<tr th:each="pizza : ${pizze}">
 						<td>[[${pizza.id}]]</td>
-						<th>[[${pizza.nome}]]</th>
+						<th>[[${pizza.name}]]</th>
 						<td>[[${pizza.descrizione}]]</td>
 						<td>[[${pizza.prezzo}]] €</td>
 						<td><a th:href="@{pizza/{pizzaId}(pizzaId=${pizza.id})}" class="btn btn-primary">Info</a></td>

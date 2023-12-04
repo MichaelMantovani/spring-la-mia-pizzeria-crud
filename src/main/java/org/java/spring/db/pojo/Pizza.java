@@ -15,7 +15,7 @@ public class Pizza {
 	private int id;
 
 	@Column(length = 60, unique = true, nullable = false)
-	private String nome;
+	private String name;
 
 	@Column(columnDefinition = "TEXT")
 	private String descrizione;
@@ -29,9 +29,9 @@ public class Pizza {
 	public Pizza() {
 	}
 
-	public Pizza(String nome, String descrizione, String foto, double prezzo) {
+	public Pizza(String name, String descrizione, String foto, double prezzo) {
 	
-		setNome(nome);
+		setNome(name);
 		setDescrizione(descrizione);
 		setFoto(foto);
 		setPrezzo(prezzo);
@@ -45,12 +45,12 @@ public class Pizza {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.name = nome;
 	}
 
 	public String getDescrizione() {
@@ -80,7 +80,7 @@ public class Pizza {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Pizza: " + this.nome + "\n" + this.descrizione + "\n" + this.prezzo;
+		return "Pizza: " + this.name + "\n" + this.descrizione + "\n" + this.prezzo;
 	}
 
 }
