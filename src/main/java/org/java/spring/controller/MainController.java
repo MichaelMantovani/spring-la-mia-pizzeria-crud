@@ -12,25 +12,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class MainController {
-	
-	@Autowired PizzaService pizzaService;
-	
-	
+
+	@Autowired
+	PizzaService pizzaService;
+
 	@GetMapping
 	public String getPizza(Model model) {
 		List<Pizza> pizze = pizzaService.findAll();
 		model.addAttribute("pizze", pizze);
-		
+
 		return "home";
 	}
-	
+
 	@GetMapping("/pizza/{id}")
 	public String getPizzaDetail(Model model, @PathVariable int id) {
-		model.getAttribute("id");
-		Pizza pizza = pizzaService.findById(id);
-		model.addAttribute("pizza", pizza);
+		model.addAttribute("pizza", pizzaService.findById(id));
 		return "pizzaDetail";
 	}
-	
-	
+
 }
