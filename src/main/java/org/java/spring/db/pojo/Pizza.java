@@ -1,11 +1,17 @@
 package org.java.spring.db.pojo;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.URL;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pizza")
@@ -15,15 +21,22 @@ public class Pizza {
 	private int id;
 
 	@Column(length = 60, unique = true, nullable = false)
+	@Length(min = 5,  message = "Il nome deve essere di almeno 5 caratteri")
+	@NotNull(message="Devi scrivere un nome")
+	@NotBlank(message="not blank")
 	private String name;
 
 	@Column(columnDefinition = "TEXT")
+	@Length(min=5, max=150, message="La descrizione deve contenere dai 5 ai 150 caratteri")
 	private String descrizione;
 
 	@Column()
+	@URL(protocol = "https", message="Il link deve essere in protocollo  https")
 	private String foto;
 
 	@Column(nullable = false)
+	@Range(min = 5, message="Il prezzo deve essere di almeno 5€")
+	@NotNull(message="Il prezzo non può essere nullo")
 	private double prezzo;
 
 	public Pizza() {
@@ -31,7 +44,7 @@ public class Pizza {
 
 	public Pizza(String name, String descrizione, String foto, double prezzo) {
 	
-		setNome(name);
+		setName(name);
 		setDescrizione(descrizione);
 		setFoto(foto);
 		setPrezzo(prezzo);
@@ -49,8 +62,8 @@ public class Pizza {
 		return name;
 	}
 
-	public void setNome(String nome) {
-		this.name = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescrizione() {
