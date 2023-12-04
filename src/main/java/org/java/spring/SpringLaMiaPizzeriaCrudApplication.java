@@ -22,7 +22,7 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 
 		pizzaService.save(new Pizza("Margherita", "Pomodoro,mozzarella",
 				"https://images.prismic.io/eataly-us/ed3fcec7-7994-426d-a5e4-a24be5a95afd_pizza-recipe-main.jpg?auto=compress,format",
-				5));
+				6));
 		pizzaService.save(new Pizza("4 stagioni", "Pomodoro,mozzarella,funghi, prosciutto cotto, olive nere,carciofi",
 				"https://i0.wp.com/www.piccolericette.net/piccolericette/wp-content/uploads/2016/07/3017_Pizza.jpg?resize=895%2C616&ssl=1",
 				10));

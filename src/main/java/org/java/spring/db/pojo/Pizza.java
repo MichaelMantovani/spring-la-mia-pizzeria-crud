@@ -21,29 +21,28 @@ public class Pizza {
 	private int id;
 
 	@Column(length = 60, unique = true, nullable = false)
-	@Length(min = 5,  message = "Il nome deve essere di almeno 5 caratteri")
-	@NotNull(message="Devi scrivere un nome")
-	@NotBlank(message="not blank")
+	@Length(min = 5, message = "Il nome deve essere di almeno 5 caratteri")
+	@NotBlank(message = "Deve esserci almeno un nome")
 	private String name;
 
 	@Column(columnDefinition = "TEXT")
-	@Length(min=5, max=150, message="La descrizione deve contenere dai 5 ai 150 caratteri")
+	@Length(min = 5, max = 150, message = "La descrizione deve contenere dai 5 ai 150 caratteri")
 	private String descrizione;
 
 	@Column()
-	@URL(protocol = "https", message="Il link deve essere in protocollo  https")
+	@URL(protocol = "https", message = "Il link deve essere in protocollo  https")
 	private String foto;
 
 	@Column(nullable = false)
-	@Range(min = 5, message="Il prezzo deve essere di almeno 5€")
-	@NotNull(message="Il prezzo non può essere nullo")
+	@Range(min = 5, message = "Il prezzo deve essere di almeno 5€")
+	@NotNull(message = "Devi inserire almeno un prezzo")
 	private double prezzo;
 
 	public Pizza() {
 	}
 
 	public Pizza(String name, String descrizione, String foto, double prezzo) {
-	
+
 		setName(name);
 		setDescrizione(descrizione);
 		setFoto(foto);

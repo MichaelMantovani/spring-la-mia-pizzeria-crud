@@ -46,26 +46,23 @@ public class MainController {
 	}
 
 	@PostMapping("/create")
-	public String storePizza(
-			Model model,
-			@Valid @ModelAttribute Pizza pizzaForm, 
-			BindingResult bindingResult) {
-		
-		System.out.println("Pizza:\n" + pizzaForm);
-		
+	public String storePizza(Model model, @Valid @ModelAttribute Pizza pizza, BindingResult bindingResult) {
+
+		System.out.println("Pizza:\n" + pizza);
+
 		if (bindingResult.hasErrors()) {
-			
+
 			System.out.println(bindingResult);
-			model.addAttribute("pizza", pizzaForm);
+			model.addAttribute("pizza", pizza);
 			return "pizzaForm";
 		}
-		
+
 		try {
-		pizzaService.save(pizzaForm);	
+			pizzaService.save(pizza);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		return "redirect:/";
 	}
 
