@@ -10,10 +10,14 @@
 <body>
 	<div class="container">
 		<div class="text-center mt-4">
-			<form class="d-flex w-25 mb-4" role="search">
-				<input class="form-control me-2" type="search" placeholder="Search" th:value="*{searchValue}" name="searchValue">
-				<button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
+			<div class="d-flex gap-3 align-items-start">
+				<form class="d-flex w-25 mb-4" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search" th:value="*{searchValue}"
+						name="searchValue">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+				<a href="/create" class="btn btn-primary">Crea pizza</a>
+			</div>
 			<h1 th:if="${pizze == null}">Non ci sono pizze</h1>
 			<table th:if="${pizze != null}" class="table table-striped">
 				<thead>
