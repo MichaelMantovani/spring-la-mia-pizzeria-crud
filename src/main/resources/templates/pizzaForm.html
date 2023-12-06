@@ -9,6 +9,7 @@
 
 <body>
 	<div class="container mt-5">
+		<div>[[${pizza.id}]]</div>
 		<form id="pizzaForm" th:object="${pizza}" method="post">
 			<div class="row gap-3  mb-3">
 				<div class="col">
@@ -58,7 +59,8 @@
 					</ul>
 				</div>
 			</div>
-			<button class="btn btn-primary">Crea pizza</button>
+			<button th:if="${pizza.id == 0}" class="btn btn-primary me-1">Crea pizza</button>
+			<button th:if="${pizza.id != 0}" class="btn btn-warning me-1">Modifica pizza</button>
 			<a  th:replace="returnButton :: button('/', 'Return')"></a>
 		</form>
 	</div>

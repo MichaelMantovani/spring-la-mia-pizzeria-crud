@@ -67,11 +67,32 @@ public class MainController {
 	}
 	
 	@GetMapping("pizza/edit/{id}")
-	public String edit(@PathVariable int id, Model model) {
+	public String editPizza(@PathVariable int id, Model model) {
 		
 		model.addAttribute("pizza", pizzaService.findById(id));
 		
 		return "pizzaForm";
+	}
+	
+	@PostMapping("pizza/edit/{id}")
+	public String updatePizza(Model model, @Valid @ModelAttribute Pizza pizza, BindingResult bindingResult) {
+
+		System.out.println("Pizza:\n" + pizza);
+
+		if (bindingResult.hasErrors()) {
+
+			System.out.println(bindingResult);
+			model.addAttribute("pizza", pizza);
+			return "pizzaForm";
+		}
+
+		try {
+			pizzaService.save(pizza);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return "redirect:/";
 	}
 	
 	
