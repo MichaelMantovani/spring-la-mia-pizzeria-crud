@@ -17,7 +17,7 @@
 					<h5 class="card-subtitle mb-2 text-body-secondary">[[${pizza.prezzo}]]</h5>
 					<p class="card-text">[[${pizza.descrizione}]]</p>
 					<form class="d-inline-block" th:action="@{/pizza/delete/{id} (id=*{pizza.id})}" method="POST">
-						<input class="btn btn-danger" type="submit" value="Elimina">
+						<button class="btn btn-danger" type="submit">Elimina</button>
 					</form>
 					<a th:replace="returnButton :: button('/', 'Return')"></a>
 				</div>
